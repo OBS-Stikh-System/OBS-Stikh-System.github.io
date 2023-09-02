@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-04-15T00:53:19.685Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>编程题-超级难的python题</title>
+    <link href="http://example.com/2023/03/19/Super-difficult-python-problem/"/>
+    <id>http://example.com/2023/03/19/Super-difficult-python-problem/</id>
+    <published>2023-03-19T08:59:00.000Z</published>
+    <updated>2023-04-15T00:53:19.685Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近我哥们老王给了一道超级难的python题：</p><h1 id="超级难的python题"><a href="#超级难的python题" class="headerlink" title="超级难的python题"></a>超级难的python题</h1><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = <span class="number">0</span> ？找出所有满足条件且不重复的三元组。</span><br><span class="line">注意：答案中不可以包含重复的三元组。</span><br><span class="line">示例：</span><br><span class="line">输入：nums = [-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,-<span class="number">1</span>,-<span class="number">4</span>]</span><br><span class="line">输出：[[-<span class="number">1</span>,-<span class="number">1</span>,<span class="number">2</span>],[-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]]</span><br><span class="line">输入：nums = []</span><br><span class="line">输出：[]</span><br><span class="line">输入：nums = [<span class="number">0</span>]</span><br><span class="line">输出：[]</span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">0</span> &lt;= nums.length &lt;= <span class="number">3000</span></span><br><span class="line"></span><br><span class="line">-<span class="number">10</span>^<span class="number">5</span> &lt;= nums[i] &lt;= <span class="number">10</span>^<span class="number">5</span></span><br><span class="line">要求：</span><br><span class="line">请实现一个函数 three_sum(nums: <span class="type">List</span>[<span class="built_in">int</span>]) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]，该函数接受一个整数数组 nums，并返回所有满足条件且不重复的三元组，每个三元组包含三个整数。</span><br></pre></td></tr></table></figure></div><p>有兴趣的人可以尝试一下，我花了2个小时还是没有解决所以我找了chatGPT的答案我都看不懂……<br>在下面：</p><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">three_sum</span>(<span class="params">nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    nums.sort()</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i-<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        l, r = i+<span class="number">1</span>, n-<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            total = nums[i] + nums[l] + nums[r]</span><br><span class="line">            <span class="keyword">if</span> total &lt; <span class="number">0</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> total &gt; <span class="number">0</span>:</span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.append([nums[i], nums[l], nums[r]])</span><br><span class="line">                <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[l] == nums[l+<span class="number">1</span>]:</span><br><span class="line">                    l += <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[r] == nums[r-<span class="number">1</span>]:</span><br><span class="line">                    r -= <span class="number">1</span></span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></div><p>说实话我都看不懂………<br>下载的py文件：<a class="link"   href="https://wwjt.lanzouw.com/ipwZF0qil53e" >下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近我哥们老王给了一道超级难的python题：&lt;/p&gt;
+&lt;h1 id=&quot;超级难的python题&quot;&gt;&lt;a href=&quot;#超级难的python题&quot; class=&quot;headerlink&quot; title=&quot;超级难的python题&quot;&gt;&lt;/a&gt;超级难的python题&lt;/h1&gt;&lt;div c</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>短信d轰炸神器-smsboom</title>
+    <link href="http://example.com/2023/03/19/smsboom/"/>
+    <id>http://example.com/2023/03/19/smsboom/</id>
+    <published>2023-03-19T06:10:26.000Z</published>
+    <updated>2023-04-15T01:10:53.746Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="smsboom链接"><a href="#smsboom链接" class="headerlink" title="smsboom链接"></a>smsboom链接</h1><p>Github: <a class="link"   href="https://github.com/OpenEthan/SMSBoom" >smsboom <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p><h1 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h1><p>若使用者滥用本项目,本人 无需承担 任何法律责任.<br>本程序仅供娱乐,源码全部开源,禁止滥用 和二次 贩卖盈利. 禁止用于商业用途.</p><h2 id="SMSBOOM轰炸"><a href="#SMSBOOM轰炸" class="headerlink" title="SMSBOOM轰炸"></a>SMSBOOM轰炸</h2><p>我们经常遇到一些小人我们又无可奈何就可以试一下轰炸他的手机号。</p><h3 id="SMSBOOM下载"><a href="#SMSBOOM下载" class="headerlink" title="SMSBOOM下载"></a>SMSBOOM下载</h3><p>githut下载太慢了用这个: <a class="link"   href="https://wwjt.lanzouw.com/in5PD0qg6wxe" >SMSBOOM下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>直接打开会闪退用cmd切到其他盘不能在c盘运行会运行不了的（虽然可以运行但是会出现各种错误！）。输入smsboom.exe如果返回</p><h1 id="菜鸟配置教程"><a href="#菜鸟配置教程" class="headerlink" title="菜鸟配置教程"></a>菜鸟配置教程</h1><p>Usage: smsboom.exe [OPTIONS] COMMAND [ARGS]…</p><p>Options:<br>  –help  Show this message and exit.</p><p>Commands:<br>  asyncrun  以最快的方式请求接口(真异步百万并发)<br>  onerun    单线程(测试使用)<br>  run       传入线程数和手机号启动轰炸,支持多手机号<br>  update    从 github 获取最新接口</p><p>就成功了。就可以轰炸了，记住一定加上smsboom.exe。</p><h2 id="轰炸"><a href="#轰炸" class="headerlink" title="轰炸"></a>轰炸</h2><p>先更新一下API端口.</p><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smsboom.exe update</span><br></pre></td></tr></table></figure></div><p>更新成功了就可以轰炸了。</p><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smsboom.exe run -t <span class="number">64</span> -p 轰炸的手机号 -f <span class="number">9999</span></span><br></pre></td></tr></table></figure></div><p>先用你自己的手机号尝试一下在开始轰炸.<br><img                       lazyload                     src="/images/loading.svg"                     data-src="file://C:\Users\马毓伟\Pictures\Screenshots\a.png"                                     ></p><h1 id="大佬配置教程"><a href="#大佬配置教程" class="headerlink" title="大佬配置教程"></a>大佬配置教程</h1><p>虽说是大佬但也挺简单的时间你写一个hello word差不多。<br>下载python: <a href="python.org">pyhton官网</a><br>推荐python3.8以上的版本。<br>这个要使用git所以你要有git没有可以走了。</p><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/AdminWhaleFall/SMSBoom.git/</span><br></pre></td></tr></table></figure></div><p>如果下载慢的话输入。</p><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.do/https://github.com/AdminWhaleFall/SMSBoom.git</span><br></pre></td></tr></table></figure></div><p>你也可以用gitub搜smsboom也是可以的。</p><p>安装扩展库</p><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pipenv</span><br></pre></td></tr></table></figure></div><p>为项目构建虚拟环境.</p><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pipenv install  # 仅使用轰//炸功能</span><br><span class="line">pipenv install --dev # 使用 webui 调试接口功能.</span><br></pre></td></tr></table></figure></div><p>尝试运行 smsboom.py</p><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pipenv shell # 激活虚拟环境</span><br><span class="line">python smsboom.py  # linux</span><br></pre></td></tr></table></figure></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;smsboom链接&quot;&gt;&lt;a href=&quot;#smsboom链接&quot; class=&quot;headerlink&quot; title=&quot;smsboom链接&quot;&gt;&lt;/a&gt;smsboom链接&lt;/h1&gt;&lt;p&gt;Github: &lt;a class=&quot;link&quot;   href=&quot;https://gi</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>怎么快速访问github-How to quickly access github</title>
+    <link href="http://example.com/2023/03/18/How-to-quickly-access-github/"/>
+    <id>http://example.com/2023/03/18/How-to-quickly-access-github/</id>
+    <published>2023-03-18T00:40:22.000Z</published>
+    <updated>2023-04-15T00:54:03.654Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="How-to-quickly-access-github怎么快速访问github"><a href="#How-to-quickly-access-github怎么快速访问github" class="headerlink" title="How to quickly access github怎么快速访问github"></a>How to quickly access github怎么快速访问github</h2><p><a class="link"   href="https://www.ipaddress.com/"  title="查询你的ip">查询ip <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p><h4 id="打开这个网址如果打不开尝试使用谷歌，火狐浏览器。在那个搜索框里搜github-com"><a href="#打开这个网址如果打不开尝试使用谷歌，火狐浏览器。在那个搜索框里搜github-com" class="headerlink" title="打开这个网址如果打不开尝试使用谷歌，火狐浏览器。在那个搜索框里搜github.com"></a>打开这个网址如果打不开尝试使用谷歌，火狐浏览器。在那个搜索框里搜github.com</h4><p><a class="link"   href="https://www.ipaddress.com/site/github.com"  title="查询github快速连接ip">gitthub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p><h4 id="我这里是140-82-114-3用管理员打开记事本打开hosts文件如果不知道请打开这个网址。"><a href="#我这里是140-82-114-3用管理员打开记事本打开hosts文件如果不知道请打开这个网址。" class="headerlink" title="我这里是140.82.114.3用管理员打开记事本打开hosts文件如果不知道请打开这个网址。"></a>我这里是140.82.114.3用管理员打开记事本打开hosts文件如果不知道请打开这个网址。</h4><p><a class="link"   href="https://baike.c114.com.cn/view.asp?id=14299-530BBDC1"  title="hosts介绍">hosts文件介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p><h4 id="输入你复制的ip加上github-com例如140-82-114-4-github-com保存退出可以了。"><a href="#输入你复制的ip加上github-com例如140-82-114-4-github-com保存退出可以了。" class="headerlink" title="输入你复制的ip加上github.com例如140.82.114.4 github.com保存退出可以了。"></a>输入你复制的ip加上github.com例如140.82.114.4 github.com保存退出可以了。</h4><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">140.82.114.4 github.com</span><br></pre></td></tr></table></figure></div><h3 id="用管理员打开cmd刷新dns缓存输入netsh-winsock-reset-重启一下好了，可以快速访问github了。"><a href="#用管理员打开cmd刷新dns缓存输入netsh-winsock-reset-重启一下好了，可以快速访问github了。" class="headerlink" title="用管理员打开cmd刷新dns缓存输入netsh winsock reset 重启一下好了，可以快速访问github了。"></a>用管理员打开cmd刷新dns缓存输入netsh winsock reset 重启一下好了，可以快速访问github了。</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh winsock reset</span><br></pre></td></tr></table></figure></div><p>尝试一下 :<a class="link"   href="https://github.com/" >github.com <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;How-to-quickly-access-github怎么快速访问github&quot;&gt;&lt;a href=&quot;#How-to-quickly-access-github怎么快速访问github&quot; class=&quot;headerlink&quot; title=&quot;How to quick</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
